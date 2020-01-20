@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Menu } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
-const MenuBar = ({ Link }) => {
+const MenuBar = () => {
   const pathname = window.location.pathname;
 
   const path = pathname === '/' ? 'home' : pathname.substr(1);
@@ -10,7 +11,7 @@ const MenuBar = ({ Link }) => {
   const handleItemClick = (e, { name }) => setActiveItem(name);
 
   return (
-    <Menu className='top-menu-bar' pointing color='blue'>
+    <Menu pointing color='blue'>
       <Menu.Item name='home' active={activeItem === 'home'} onClick={handleItemClick} as={Link} to='/' />
       <Menu.Menu position='right'>
         <Menu.Item name='login' active={activeItem === 'login'} onClick={handleItemClick} as={Link} to='/login' />
