@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 
-import 'semantic-ui-css/semantic.min.css';
+// import 'semantic-ui-css/semantic.min.css';
+import 'semantic-ui-css/semantic.css';
 import './App.css';
 
 import { AuthProvider } from './context/auth';
@@ -17,10 +18,10 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <Container style={{ paddingTop: 20 }}>
+        <AuthRoute exact path='/login' component={Login} />
+        <Container>
+          {/* <Route exact path='/' component={Home} /> */}
           <MenuBar Link={Link} />
-          <Route exact path='/' component={Home} />
-          <AuthRoute exact path='/login' component={Login} />
           <AuthRoute exact path='/register' component={Register} />
         </Container>
       </Router>

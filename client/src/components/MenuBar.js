@@ -15,14 +15,14 @@ const MenuBar = () => {
   const handleItemClick = (e, { name }) => setActiveItem(name);
 
   const menuBar = user ? (
-    <Menu pointing color='blue'>
+    <Menu pointing color='blue' fixed='top'>
       <Menu.Item name={user.username} active as={Link} to='/' />
       <Menu.Menu position='right'>
         <Menu.Item name='logout' onClick={logout} />
       </Menu.Menu>
     </Menu>
   ) : (
-    <Menu pointing color='blue'>
+    <Menu pointing color='blue' fixed='top'>
       <Menu.Item name='home' active={activeItem === 'home'} onClick={handleItemClick} as={Link} to='/' />
       <Menu.Menu position='right'>
         <Menu.Item name='login' active={activeItem === 'login'} onClick={handleItemClick} as={Link} to='/login' />

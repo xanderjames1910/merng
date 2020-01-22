@@ -35,9 +35,21 @@ module.exports = gql`
     confirmPassword: String!
     email: String!
   }
+  type dataDiaria {
+    id: ID!
+    COMPLETAMIENTO: String!
+    FECHA: String!
+    PD_HRS_PROD: Int!
+    PD_PETROLEO: Float!
+    PD_GAS: Float!
+    PD_AGUA: Float!
+    createdAt: String!
+    updatedAt: String!
+  }
   type Query {
     getPosts: [Post]
     getPost(postId: ID!): Post
+    getDataDiaria: [dataDiaria]
   }
   type Mutation {
     register(registerInput: RegisterInput): User!
