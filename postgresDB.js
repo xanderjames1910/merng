@@ -8,7 +8,7 @@ const POSTGRESDB = new Sequelize('proyectoPetrolero', 'postgres', 'E-RpQ2we', {
 
 const DatosDiarios = POSTGRESDB.define('DATOS_DIARIOS', {
   COMPLETAMIENTO: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(32),
     allowNull: false,
   },
   FECHA: {
@@ -33,16 +33,16 @@ const DatosDiarios = POSTGRESDB.define('DATOS_DIARIOS', {
   },
 });
 
-// POSTGRESDB.sync().then(() => {
-//   // return DatosDiarios.create({
-//   //   COMPLETAMIENTO: 'CYB-003TS',
-//   //   FECHA: '2010-06-04',
-//   //   PD_HRS_PROD: 24,
-//   //   PD_PETROLEO: 339.027,
-//   //   PD_GAS: 96,
-//   //   PD_AGUA: 1138.48,
-//   // });
-//   return DatosDiarios;
-// });
+POSTGRESDB.sync().then(() => {
+  // return DatosDiarios.create({
+  //   COMPLETAMIENTO: 'CYB-003TS',
+  //   FECHA: '2010-06-10',
+  //   PD_HRS_PROD: 24,
+  //   PD_PETROLEO: 371.895,
+  //   PD_GAS: 44,
+  //   PD_AGUA: 1160.95,
+  // });
+  return DatosDiarios;
+});
 
 module.exports = POSTGRESDB;

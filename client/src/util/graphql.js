@@ -21,3 +21,16 @@ export const FETCH_POSTS_QUERY = gql`
     }
   }
 `;
+
+export const FETCH_DAILY_DATA_QUERY = gql`
+  {
+    getDataDiaria {
+      id
+      COMPLETAMIENTO
+      FECHA
+      PD_PETROLEO
+      PD_GAS
+      PD_AGUA
+    }
+  }
+`;

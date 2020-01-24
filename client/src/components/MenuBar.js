@@ -6,7 +6,7 @@ import { AuthContext } from '../context/auth';
 
 const MenuBar = () => {
   const { user, logout } = useContext(AuthContext);
-
+  console.log(user);
   const pathname = window.location.pathname;
 
   const path = pathname === '/' ? 'home' : pathname.substr(1);
