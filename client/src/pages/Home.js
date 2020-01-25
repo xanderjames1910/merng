@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { Grid, Card } from 'semantic-ui-react';
-import { Bar, Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
 import { AuthContext } from '../context/auth';
 import PostCard from '../components/PostCard';
@@ -33,40 +33,81 @@ const Home = () => {
     datosDiarios = { data: data.getDataDiaria };
   }
 
-  const FECHA_DATA = [datosDiarios && datosDiarios.data.map(fecha => fecha.FECHA)];
-  const PRODUCCION_GAS = [datosDiarios && datosDiarios.data.map(pd_gas => pd_gas.PD_GAS)];
-  const PRODUCCION_AGUA = [datosDiarios && datosDiarios.data.map(pd_agua => pd_agua.PD_AGUA)];
-  const PRODUCCION_PRTROLEO = [datosDiarios && datosDiarios.data.map(pd_petroleo => pd_petroleo.PD_PETROLEO)];
+  const chartData =
+    datosDiarios &&
+    datosDiarios.data.reduce(
+      (res, individulData) => {
+        const { COMPLETAMIENTO, FECHA, PD_PETROLEO, PD_GAS, PD_AGUA } = individulData;
+        res[0].push(COMPLETAMIENTO);
+        res[1].push(FECHA);
+        res[2].push(PD_GAS);
+        res[3].push(PD_AGUA);
+        res[4].push(PD_PETROLEO);
+        return res;
+      },
+      [[], [], [], [], []],
+    ); // start with an array of 4 empty arrays into which we can push our values
+
+  // console.log(chartData[2].length());
+
+  const colorGas = ['rgba(219, 40, 40, 0.7)'];
 
   const dataForChart = {
-    labels: FECHA_DATA[0],
+    labels: chartData[1],
     datasets: [
       {
         label: 'Producción de Gas',
-        data: PRODUCCION_GAS[0],
-        backgroundColor: ['rgba(219, 40, 40, 0.2)'],
-        borderColor: ['rgba(219, 40, 40, 1)'],
-        borderWidth: 1,
         fill: false,
         lineTension: 0.0,
+        backgroundColor: 'rgba(219, 40, 40, 0.4)',
+        borderColor: 'rgba(219, 40, 40, 1)',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderWidth: 1,
+        pointBorderColor: 'rgba(219, 40, 40, 1)',
+        pointBackgroundColor: 'rgba(219, 40, 40, 0.4)',
+        pointBorderWidth: 1,
+        pointHoverRadius: 6,
+        pointHoverBackgroundColor: 'rgba(219, 40, 40, 1)',
+        pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
+        pointHoverBorderWidth: 2,
+        data: chartData[2],
       },
       {
         label: 'Producción de Agua',
-        data: PRODUCCION_AGUA[0],
-        backgroundColor: ['rgba(33, 133, 208, 0.2)'],
-        borderColor: ['rgba(33, 133, 208, 1)'],
-        borderWidth: 1,
         fill: false,
         lineTension: 0.0,
+        backgroundColor: 'rgba(33, 133, 208, 0.4)',
+        borderColor: 'rgba(33, 133, 208, 1)',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderWidth: 1,
+        pointBorderColor: 'rgba(33, 133, 208, 1)',
+        pointBackgroundColor: 'rgba(33, 133, 208, 0.4)',
+        pointBorderWidth: 1,
+        pointHoverRadius: 6,
+        pointHoverBackgroundColor: 'rgba(33, 133, 208, 1)',
+        pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
+        pointHoverBorderWidth: 2,
+        data: chartData[3],
       },
       {
         label: 'Producción de Petroleo',
-        data: PRODUCCION_PRTROLEO[0],
-        backgroundColor: ['rgba(33, 186, 69, 0.2)'],
-        borderColor: ['rgba(33, 186, 69, 1)'],
-        borderWidth: 1,
         fill: false,
         lineTension: 0.0,
+        backgroundColor: 'rgba(33, 186, 69, 0.4)',
+        borderColor: 'rgba(33, 186, 69, 1)',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderWidth: 1,
+        pointBorderColor: 'rgba(33, 186, 69, 1)',
+        pointBackgroundColor: 'rgba(33, 186, 69, 0.4)',
+        pointBorderWidth: 1,
+        pointHoverRadius: 6,
+        pointHoverBackgroundColor: 'rgba(33, 186, 69, 1)',
+        pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
+        pointHoverBorderWidth: 2,
+        data: chartData[4],
       },
     ],
   };

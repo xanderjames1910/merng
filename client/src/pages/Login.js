@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Card, Button, Form, Grid, Image, List, Message } from 'semantic-ui-react';
+import { Card, Button, Form, Grid, List, Message } from 'semantic-ui-react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 

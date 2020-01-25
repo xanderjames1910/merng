@@ -43,8 +43,8 @@ module.exports = gql`
     PD_PETROLEO: Float!
     PD_GAS: Float!
     PD_AGUA: Float!
-    createdAt: String!
-    updatedAt: String!
+    # createdAt: String!
+    # updatedAt: String!
   }
   type Query {
     getPosts: [Post]

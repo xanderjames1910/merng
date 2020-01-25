@@ -9,10 +9,11 @@ import './App.css';
 import { AuthContext, AuthProvider } from './context/auth';
 import AuthRoute from './util/AuthRoute';
 
-import MenuBar from './components/MenuBar';
+import MenuBar from './layout/MenuBar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import SideBar from './layout/SideBar';
 
 const App = () => {
   const { user, logout } = useContext(AuthContext);
@@ -23,11 +24,12 @@ const App = () => {
         {/* {user ? ( */}
         <Fragment>
           <Container style={{ paddingTop: '5rem' }}>
-            <MenuBar Link={Link} />
+            {/* <MenuBar Link={Link} /> */}
             <Route exact path='/' component={Home} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
           </Container>
+          <Route exact path='/sidebar' component={SideBar} />
         </Fragment>
         {/* ) : (
           // <Redirect to='/login' />
