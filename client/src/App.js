@@ -11,6 +11,7 @@ import AuthRoute from './util/AuthRoute';
 
 import MenuBar from './layout/MenuBar';
 import Home from './pages/Home';
+// import Inicio from './pages/Inicio';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import SideBar from './layout/SideBar';
@@ -22,14 +23,15 @@ const App = () => {
     <AuthProvider>
       <Router>
         {/* {user ? ( */}
+        <Route exact path='/sidebar' component={SideBar} />
         <Fragment>
           <Container style={{ paddingTop: '5rem' }}>
             {/* <MenuBar Link={Link} /> */}
             <Route exact path='/' component={Home} />
+            {/* <Route exact path='/inicio' component={Inicio} /> */}
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
           </Container>
-          <Route exact path='/sidebar' component={SideBar} />
         </Fragment>
         {/* ) : (
           // <Redirect to='/login' />
