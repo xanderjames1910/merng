@@ -1,11 +1,15 @@
+// import React, { useContext } from 'react';
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { Card, Dimmer, Loader } from 'semantic-ui-react';
 import { Line } from 'react-chartjs-2';
 
+// import { AuthContext } from '../context/auth';
 import { FETCH_DAILY_DATA_QUERY } from '../util/graphql';
 
 const Inicio = () => {
+  // const { user } = useContext(AuthContext);
+
   let datosDiarios = '';
   const { loading, data } = useQuery(FETCH_DAILY_DATA_QUERY);
 

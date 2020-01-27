@@ -1,6 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { Button, Menu, Container } from 'semantic-ui-react';
+import { Menu, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+// import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+
+// import { logout } from '../store/actions/authActions';
 
 import { AuthContext } from '../context/auth';
 
@@ -16,21 +20,21 @@ const MenuBar = () => {
 
   const menuBar = user ? (
     <Container>
-      <Menu.Item name={user.username} active as={Link} to='/' />
+      {/* <Menu.Item name={user.username} active as={Link} to='/' /> */}
       <Menu.Menu position='right'>
-        <Menu.Item
+        {/* <Menu.Item
           name='register'
           active={activeItem === 'register'}
           onClick={handleItemClick}
           as={Link}
           to='/register'
-        />
-        <Menu.Item name='logout' onClick={logout} />
+        /> */}
+        <Menu.Item name='salir' onClick={logout} />
       </Menu.Menu>
     </Container>
   ) : (
     <Container>
-      <Menu.Item name='home' active={activeItem === 'home'} onClick={handleItemClick} as={Link} to='/' />
+      <Menu.Item name='inicio' active={activeItem === 'inicio'} onClick={handleItemClick} as={Link} to='/' />
       <Menu.Menu position='right'>
         <Menu.Item
           className='right-menu-border'
@@ -47,4 +51,11 @@ const MenuBar = () => {
   return menuBar;
 };
 
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     logout: () => dispatch(logout()),
+//   };
+// };
+
+// export default connect(null, mapDispatchToProps)(MenuBar);
 export default MenuBar;

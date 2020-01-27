@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { Icon, Menu, Sidebar, Container } from 'semantic-ui-react';
+import { Feed, Image, Menu, Sidebar, Container } from 'semantic-ui-react';
+import { BrowserRouter as Router, Link, Redirect, Route, Switch } from 'react-router-dom';
+
 import MenuBar from './MenuBar';
 import Inicio from '../pages/Inicio';
+import SideMenu from './SideMenu';
 
 const SideBar = () => {
   const [visible, setVisible] = useState(false);
@@ -13,27 +16,20 @@ const SideBar = () => {
   return (
     <Sidebar.Pushable>
       <Sidebar as={Menu} animation='push' icon='labeled' inverted vertical visible={visible} width='thin'>
-        <Menu.Item as='a'>
-          <Icon name='home' />
-          Home
-        </Menu.Item>
-        <Menu.Item as='a'>
-          <Icon name='gamepad' />
-          Games
-        </Menu.Item>
-        <Menu.Item as='a'>
-          <Icon name='camera' />
-          Channels
-        </Menu.Item>
+        <SideMenu />
       </Sidebar>
-
-      <Sidebar.Pusher>
+      <Sidebar.Pusher className={!visible ? '' : 'pusher-width-toggled'}>
         <Menu pointing color='blue' fixed='top'>
-          <Menu.Item icon='bars' onClick={sideBarToggle} />
+          {/* <Menu.Item icon='bars' onClick={sideBarToggle} /> */}
+          <Menu.Item icon='bars' />
           <MenuBar sideBarToggle={sideBarToggle} />
         </Menu>
-        <Container>
-          <Inicio />
+        <Container style={{ paddingTop: '4em' }}>
+          <Router>
+            <Switch>
+              <Route exact path='/inicio' component={Inicio} />
+            </Switch>
+          </Router>
         </Container>
       </Sidebar.Pusher>
     </Sidebar.Pushable>

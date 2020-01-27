@@ -24,6 +24,10 @@
   background-size: cover;
 }
 
-.right-menu-border{
+.right-menu-border {
   border-right: 1px solid rgba(34, 36, 38, 0.1);
+}
+
+.pusher-width-toggled {
+  width: 88vw !important;
 }

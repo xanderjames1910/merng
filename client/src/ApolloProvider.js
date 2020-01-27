@@ -6,6 +6,10 @@ import { createHttpLink } from 'apollo-link-http';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { setContext } from 'apollo-link-context';
 
+import { AuthProvider } from './context/auth';
+
+// import store from './store';
+
 const httpLink = createHttpLink({
   uri: 'http://localhost:5000',
 });
@@ -26,6 +30,8 @@ const client = new ApolloClient({
 
 export default (
   <ApolloProvider client={client}>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </ApolloProvider>
 );

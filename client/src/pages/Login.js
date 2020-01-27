@@ -1,10 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { Card, Button, Form, Grid, List, Message } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+// import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
 
 import { AuthContext } from '../context/auth';
 import { useForm } from '../util/hooks';
+
+// import { login } from '../store/actions/authActions';
 
 const Login = props => {
   const context = useContext(AuthContext);
@@ -19,7 +24,8 @@ const Login = props => {
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
     update(_, { data: { login: userData } }) {
       context.login(userData);
-      props.history.push('/');
+      // login(userData);
+      props.history.push('/inicio');
     },
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
@@ -31,7 +37,9 @@ const Login = props => {
     loginUser();
   }
 
-  return (
+  return context.user ? (
+    <Redirect to='/inicio' />
+  ) : (
     <div>
       <Grid style={{ margin: 0 }}>
         <Grid.Column width={9} className='login-background' />
@@ -93,4 +101,15 @@ const LOGIN_USER = gql`
   }
 `;
 
+// Login.propTypes = {
+//   login: PropTypes.func.isRequired,
+// };
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     login: (username, password) => dispatch(login(username, password)),
+//   };
+// };
+
+// export default connect(null, mapDispatchToProps)(Login);
 export default Login;
