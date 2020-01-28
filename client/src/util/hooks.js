@@ -7,6 +7,11 @@ export const useForm = (callback, initialState = {}) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const onChangeSelect = (e, res) => {
+    const { name, value } = res || e.target;
+    setValues({ ...values, [name]: value });
+  };
+
   const onSubmit = e => {
     e.preventDefault();
     callback();
@@ -14,6 +19,7 @@ export const useForm = (callback, initialState = {}) => {
 
   return {
     onChange,
+    onChangeSelect,
     onSubmit,
     values,
   };

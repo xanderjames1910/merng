@@ -48,9 +48,22 @@ module.exports = {
         token,
       };
     },
-    async register(_, { registerInput: { username, email, password, confirmPassword } }) {
+    async register(
+      _,
+      { registerInput: { nombre, cedula, telefono, username, email, password, confirmPassword, perfil, direccion } },
+    ) {
       // Validate user data
-      const { valid, errors } = validateRegisterInput(username, email, password, confirmPassword);
+      const { valid, errors } = validateRegisterInput(
+        nombre,
+        cedula,
+        telefono,
+        username,
+        email,
+        password,
+        confirmPassword,
+        perfil,
+        direccion,
+      );
       if (!valid) {
         throw new UserInputError('Errors', { errors });
       }
@@ -67,9 +80,14 @@ module.exports = {
       password = await bcrypt.hash(password, 12);
 
       const newUser = new User({
-        email,
+        nombre,
+        cedula,
+        telefono,
         username,
+        email,
         password,
+        perfil,
+        direccion,
         createdAt: new Date().toISOString(),
       });
 

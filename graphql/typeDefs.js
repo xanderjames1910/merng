@@ -24,16 +24,26 @@ module.exports = gql`
   }
   type User {
     id: ID!
-    email: String!
-    token: String!
+    nombre: String!
+    cedula: String!
+    telefono: String!
     username: String!
+    email: String!
+    perfil: String!
+    direccion: String!
+    token: String!
     createdAt: String!
   }
   input RegisterInput {
+    nombre: String!
+    cedula: String!
+    telefono: String!
     username: String!
+    email: String!
     password: String!
     confirmPassword: String!
-    email: String!
+    perfil: String!
+    direccion: String!
   }
   type dataDiaria {
     id: ID!

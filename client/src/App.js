@@ -11,6 +11,7 @@ import { AuthContext } from './context/auth';
 
 import MenuBar from './layout/MenuBar';
 // import Home from './pages/Home';
+import Register from './pages/Register';
 
 import Login from './pages/Login';
 import SideMenu from './layout/SideMenu';
@@ -48,6 +49,7 @@ const App = () => {
                   <Route exact path='/inicio' component={Inicio} />
                   <Route exact path='/configuracion' component={AdminSettings} />
                   <Route exact path='/register-modal' component={RegisterModal} />
+                  <Route exact path='/register' component={Register} />
                 </Switch>
               </Container>
             </Sidebar.Pusher>
