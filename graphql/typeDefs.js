@@ -57,7 +57,7 @@ module.exports = gql`
     # updatedAt: String!
   }
   type Query {
-    getPosts: [Post]
+    getPosts(filter: String): [Post]
     getPost(postId: ID!): Post
     getDataDiaria: [dataDiaria]
   }

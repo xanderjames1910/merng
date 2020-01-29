@@ -18,6 +18,8 @@ import SideMenu from './layout/SideMenu';
 import Inicio from './pages/Inicio';
 import AdminSettings from './pages/AdminSettings';
 import RegisterModal from './pages/RegisterModal';
+import MapIPP from './components/MapIPP';
+import GoogleMapsIPP from './components/GoogleMapsIPP';
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -50,6 +52,8 @@ const App = () => {
                   <Route exact path='/configuracion' component={AdminSettings} />
                   <Route exact path='/register-modal' component={RegisterModal} />
                   <Route exact path='/register' component={Register} />
+                  <Route exact path='/mapa' component={MapIPP} />
+                  <Route exact path='/maps' component={GoogleMapsIPP} />
                 </Switch>
               </Container>
             </Sidebar.Pusher>
@@ -57,17 +61,6 @@ const App = () => {
         </Fragment>
       )}
     </Router>
-
-    // {/* <Fragment>
-    //     <Container style={{ paddingTop: '5rem' }}>
-    //       <MenuBar Link={Link} />
-    //       <Route exact path='/inicio' component={Inicio} />
-    //       <Route exact path='/register' component={Register} />
-    //     </Container>
-    //   </Fragment> */}
-    // {/* ) : (
-    //     // <Redirect to='/login' />
-    //   )} */}
   );
 };
 

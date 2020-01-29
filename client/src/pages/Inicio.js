@@ -1,11 +1,12 @@
 // import React, { useContext } from 'react';
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { Card, Dimmer, Loader } from 'semantic-ui-react';
+import { Card, Dimmer, Loader, Grid } from 'semantic-ui-react';
 import { Line } from 'react-chartjs-2';
 
 // import { AuthContext } from '../context/auth';
 import { FETCH_DAILY_DATA_QUERY } from '../util/graphql';
+import MapIPP from '../components/MapIPP';
 
 const Inicio = () => {
   // const { user } = useContext(AuthContext);
@@ -93,21 +94,30 @@ const Inicio = () => {
   };
 
   return (
-    <Card style={{ width: '100%' }}>
-      <Card.Content header='Monitoreo de Producción' />
-      <Card.Content style={{ height: 350 }}>
-        {loading ? (
-          <Dimmer active>
-            <Loader>Cargando datos...</Loader>
-          </Dimmer>
-        ) : (
-          <Line data={dataForChart} width={600} height={350} options={{ maintainAspectRatio: false }} />
-        )}
-      </Card.Content>
-      {/* <Card.Content extra>
+    <div>
+      <Grid>
+        <Grid.Column width={6}>
+          <MapIPP />
+        </Grid.Column>
+        <Grid.Column width={10}>
+          <Card style={{ width: '100%' }}>
+            <Card.Content header='Monitoreo de Producción' />
+            <Card.Content style={{ height: 350 }}>
+              {loading ? (
+                <Dimmer active>
+                  <Loader>Cargando datos...</Loader>
+                </Dimmer>
+              ) : (
+                <Line data={dataForChart} width={600} height={350} options={{ maintainAspectRatio: false }} />
+              )}
+            </Card.Content>
+            {/* <Card.Content extra>
           <Icon name='user' />4 Friends
         </Card.Content> */}
-    </Card>
+          </Card>
+        </Grid.Column>
+      </Grid>
+    </div>
   );
 };
 

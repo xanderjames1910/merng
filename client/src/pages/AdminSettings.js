@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, Dimmer, Header, Message, Icon, Image, Loader, Table } from 'semantic-ui-react';
+import { Button, Card, Header, Icon, Image, Table } from 'semantic-ui-react';
 import RegisterModal from './RegisterModal';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

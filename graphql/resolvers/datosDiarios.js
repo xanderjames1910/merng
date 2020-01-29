@@ -1,4 +1,4 @@
-const postgresDB = require('../../postgresDB');
+const postgresDB = require('../../postgres/postgresDB');
 
 module.exports = {
   Query: {

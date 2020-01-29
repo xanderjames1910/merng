@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button, Dropdown, Form, Grid, List, Message, Modal, Select } from 'semantic-ui-react';
+import { Button, Form, Grid, List, Message, Modal } from 'semantic-ui-react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
@@ -7,7 +7,7 @@ import { AuthContext } from '../context/auth';
 import { useForm } from '../util/hooks';
 
 const RegisterModal = ({ open, close }) => {
-  const context = useContext(AuthContext);
+  // const context = useContext(AuthContext);
 
   const [errors, setErrors] = useState({});
 
